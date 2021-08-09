@@ -2,6 +2,7 @@ package com.linyi.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,11 +31,14 @@ public class GetUrlServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		PrintWriter out=response.getWriter();
+		String input_url = request.getParameter("input_url");
 		GetMusicUrlServer gmus = new GetMusicUrlServer(new GetMusicUrlDaoImpl());
-		String id = request.getParameter("id");
-		PrintWriter pw = response.getWriter();
-		String url = gmus.GetUrl(id);
-		pw.write(url);
+		String audio = gmus.GetUrl(input_url);
+		out.print(audio);
 		
 	}
 

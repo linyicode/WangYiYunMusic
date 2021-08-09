@@ -8,7 +8,7 @@ public class GetMusicUrlServer {
 		super();
 		this.gmud = gmud;
 	}
-	public String GetUrl(String id) {
-		return gmud.GetUrl(id);
+	public String GetUrl(String input_url) {
+		return gmud.GetUrl(input_url);
 	}
 }

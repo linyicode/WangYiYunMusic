@@ -1,5 +1,5 @@
 package com.linyi.dao;
 
 public interface GetMusicUrlDao {
-	public String GetUrl(String id);
+	public String GetUrl(String input_url);
 }
