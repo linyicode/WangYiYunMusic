@@ -36,10 +36,13 @@ public class GetUrlServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		PrintWriter out=response.getWriter();
 		String input_url = request.getParameter("input_url");
-		GetMusicUrlServer gmus = new GetMusicUrlServer(new GetMusicUrlDaoImpl());
-		String audio = gmus.GetUrl(input_url);
-		out.print(audio);
-		
+		if(input_url.length()!=0) {
+			GetMusicUrlServer gmus = new GetMusicUrlServer(new GetMusicUrlDaoImpl());
+			String audio = gmus.GetUrl(input_url);
+			out.print(audio);
+		}else {
+			out.print("Url输入错误或为空,请检查");
+		}
 	}
 
 	
